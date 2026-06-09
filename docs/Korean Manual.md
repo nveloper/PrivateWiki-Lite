@@ -1,6 +1,6 @@
-# DB-less Wiki (Static Version) 운영/이용 메뉴얼
+# Private Wiki Lite Wiki (Static Version) 운영/이용 메뉴얼
 
-본 문서는 GitHub Pages, Vercel 등 **정적 웹 호스팅(Static Web Hosting)** 을 위해 최적화된 **DB-less Wiki (Static Version)** 의 운영 및 사용법을 설명합니다.
+본 문서는 GitHub Pages, Vercel 등 **정적 웹 호스팅(Static Web Hosting)** 을 위해 최적화된 **Private Wiki Lite** 의 운영 및 사용법을 설명합니다.
 
 이 버전은 백엔드 서버(Node.js) 없이 순수 HTML, CSS, JS만으로 구동되며, 보안과 관리의 편리함을 위해 웹 UI에서의 편집 및 업로드 기능이 완전히 제거된 "읽기 전용(Read-Only)" 배포 버전입니다.
 
@@ -34,7 +34,7 @@
 ## 2. 사이트 전체 설정 관리 (`settings.json`)
 
 웹 UI에 있던 글로벌 설정(홈페이지 지정 등)이 모두 하나의 설정 파일로 통합되었습니다.
-사이트의 굵직한 설정을 바꾸려면 `ghp/settings.json` 파일을 열어 직접 텍스트를 수정해야 합니다.
+사이트의 굵직한 설정을 바꾸려면 `/settings.json` 파일을 열어 직접 텍스트를 수정해야 합니다.
 
 ```json
 {
@@ -47,7 +47,7 @@
 ```
 - **siteTitle:** 좌측 상단 및 브라우저 탭에 표시될 사이트 이름입니다.
 - **homeDocument:** 처음 사이트에 접속했을 때 띄울 메인 문서의 경로입니다. (`docs/` 폴더를 기준으로 작성합니다. 예: `welcome.md`)
-- **faviconUrl:** 브라우저 탭에 표시될 아이콘(파비콘) 경로입니다. (웹 주소를 넣거나 `ghp/` 폴더 기준의 경로를 적습니다.)
+- **faviconUrl:** 브라우저 탭에 표시될 아이콘(파비콘) 경로입니다. (웹 주소를 넣거나 `/` 폴더 기준의 경로를 적습니다.)
 - **customFontUrl:** 적용할 폰트 파일의 경로입니다.
 - **customFont:** 폰트의 이름을 임의로 지정합니다. (영문 추천)
 
