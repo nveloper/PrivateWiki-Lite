@@ -1,4 +1,4 @@
-# Private Wiki Lite Wiki (Static Version) 운영/이용 메뉴얼
+# Private Wiki Lite 운영/이용 메뉴얼
 
 본 문서는 GitHub Pages, Vercel 등 **정적 웹 호스팅(Static Web Hosting)** 을 위해 최적화된 **Private Wiki Lite** 의 운영 및 사용법을 설명합니다.
 
