@@ -26,14 +26,13 @@ jobs:
           node-version: 18
       - name: Build static assets
         run: |
-          cd ghp
           node ghp_build.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './ghp'
+          path: '.'
 
   deploy:
     environment:
