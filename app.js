@@ -24,13 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadHome(historyMode = 'push') {
         if (globalConfig.homeDocument) {
             currentPath = globalConfig.homeDocument;
-            if (historyMode === 'push') window.history.pushState({ path: currentPath }, '', `/?path=${encodeURIComponent(currentPath)}`);
-            if (historyMode === 'replace') window.history.replaceState({ path: currentPath }, '', `/?path=${encodeURIComponent(currentPath)}`);
+            if (historyMode === 'push') window.history.pushState({ path: currentPath }, '', `?path=${encodeURIComponent(currentPath)}`);
+            if (historyMode === 'replace') window.history.replaceState({ path: currentPath }, '', `?path=${encodeURIComponent(currentPath)}`);
             loadContent(currentPath);
         } else {
             currentPath = '';
-            if (historyMode === 'push') window.history.pushState({ path: '' }, '', '/');
-            if (historyMode === 'replace') window.history.replaceState({ path: '' }, '', '/');
+            if (historyMode === 'push') window.history.pushState({ path: '' }, '', window.location.pathname);
+            if (historyMode === 'replace') window.history.replaceState({ path: '' }, '', window.location.pathname);
             markdownContainer.innerHTML = getEmptyStateHtml();
             document.querySelectorAll('.tree-item').forEach(el => el.classList.remove('active'));
         }
@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (redirectMatch) {
                 const targetPath = redirectMatch[1].trim();
                 if (path !== targetPath) {
-                    window.history.replaceState({ path: targetPath }, '', `/?path=${encodeURIComponent(targetPath)}`);
+                    window.history.replaceState({ path: targetPath }, '', `?path=${encodeURIComponent(targetPath)}`);
                     return loadContent(targetPath);
                 }
             }
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // SPA routing for internal markdown links
             markdownContainer.querySelectorAll('a').forEach(a => {
                 const href = a.getAttribute('href');
-                if (href && href.startsWith('/?path=')) {
+                if (href && href.includes('?path=')) {
                     a.addEventListener('click', (e) => {
                         e.preventDefault();
                         const targetPath = new URLSearchParams(href.split('?')[1]).get('path');
@@ -291,7 +291,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const homeLink = markdownContainer.querySelector('.breadcrumb-home');
             if (homeLink) {
                 homeLink.addEventListener('click', () => {
-                    window.location.href = '/';
+                    window.history.pushState({ path: '' }, '', window.location.pathname);
+                    loadHome('replace');
                 });
             }
             
