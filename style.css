@@ -214,6 +214,11 @@ body:has(md-dialog[open]) .sidebar {
 }
 
 /* Tree Menu */
+#tree-content-wrapper {
+  width: max-content;
+  min-width: 100%;
+}
+
 .tree-node {
   display: flex;
   flex-direction: column;
@@ -224,7 +229,7 @@ body:has(md-dialog[open]) .sidebar {
   align-items: center;
   width: max-content;
   white-space: nowrap;
-  padding: 8px 8px;
+  padding: 8px 24px 8px 8px;
   gap: 12px;
   box-sizing: border-box;
   cursor: pointer;
@@ -235,6 +240,10 @@ body:has(md-dialog[open]) .sidebar {
   position: relative;
   outline: none;
   -webkit-tap-highlight-color: transparent;
+}
+
+.tree-item:has(.tree-actions) {
+  padding: 8px 8px;
 }
 
 .tree-item:hover {
