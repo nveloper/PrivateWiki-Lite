@@ -104,6 +104,9 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  height: 100dvh;
+  width: 100vw;
+  max-width: 100%;
   overflow: hidden;
 }
 
@@ -182,8 +185,10 @@ body:has(md-dialog[open]) .sidebar {
 .app-layout {
   display: flex;
   flex: 1;
+  min-width: 0;
   overflow: hidden;
   position: relative;
+  width: 100%;
 }
 
 /* Sidebar */
@@ -217,7 +222,11 @@ body:has(md-dialog[open]) .sidebar {
 .tree-item {
   display: flex;
   align-items: center;
-  padding: 8px 16px;
+  width: max-content;
+  white-space: nowrap;
+  padding: 8px 8px;
+  gap: 12px;
+  box-sizing: border-box;
   cursor: pointer;
   border-radius: 24px;
   margin: 2px 12px;
@@ -239,7 +248,6 @@ body:has(md-dialog[open]) .sidebar {
 }
 
 .tree-item md-icon {
-  margin-right: 12px;
   font-size: 20px;
 }
 
@@ -273,11 +281,15 @@ body:has(md-dialog[open]) .sidebar {
 .tree-children-wrapper {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.3s cubic-bezier(0.2, 0, 0, 1);
+  width: 0;
+  overflow: hidden;
+  transition: grid-template-rows 0.3s cubic-bezier(0.2, 0, 0, 1), width 0s linear 0.3s;
 }
 
 .tree-children-wrapper.open {
   grid-template-rows: 1fr;
+  width: auto;
+  transition: grid-template-rows 0.3s cubic-bezier(0.2, 0, 0, 1), width 0s linear 0s;
 }
 
 .tree-children {
@@ -291,7 +303,9 @@ body:has(md-dialog[open]) .sidebar {
 /* Main Content */
 .content-area {
   flex: 1;
+  min-width: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   background-color: var(--md-sys-color-background);
   padding: 32px 48px;
   scroll-behavior: smooth;
@@ -302,6 +316,8 @@ body:has(md-dialog[open]) .sidebar {
 #markdown-container {
   flex: 1;
   min-width: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 
@@ -465,6 +481,7 @@ body:has(md-dialog[open]) .sidebar {
   padding: 16px;
   border-bottom: 1px solid var(--md-sys-color-surface-variant);
   text-align: left;
+  white-space: nowrap;
 }
 
 .markdown-body th:not(:last-child), .markdown-body td:not(:last-child) {
